@@ -78,8 +78,8 @@ export default function Hero() {
           <motion.div variants={item} className="mt-12 flex flex-wrap items-center gap-4">
             <span className="inline-flex items-center gap-2 text-sm text-[rgb(var(--muted))]">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[rgb(var(--accent))] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[rgb(var(--accent))]" />
               </span>
               Freelance — open now
             </span>

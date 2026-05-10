@@ -14,16 +14,6 @@ const projects = [
     status: 'Shipped',
     link: 'https://www.ergoprima.com/',
   },
-  {
-    index: '02',
-    image: null,
-    title: 'More coming soon',
-    tagline: 'Currently heads down building.',
-    description: 'Working on new projects — check back soon or reach out if you want to know what\'s in the pipeline.',
-    tech: [],
-    status: 'Coming soon',
-    link: null,
-  },
 ]
 
 const statusColor = {
@@ -38,8 +28,9 @@ function ProjectCard({ project, index, featured = false }) {
     return (
       <Reveal delay={0}>
         <motion.div
-          className="group relative border border-[rgb(var(--line))] rounded-lg overflow-hidden cursor-pointer"
-          whileHover={{ y: -4, boxShadow: '0 16px 40px rgb(0 0 0 / 0.1)' }}
+          className="group relative rounded-lg overflow-hidden cursor-pointer"
+          style={{ border: '1px solid rgb(var(--line))' }}
+          whileHover={{ y: -4, boxShadow: '0 16px 40px rgb(0 0 0 / 0.1)', borderColor: 'rgb(var(--accent))' }}
           transition={{ duration: 0.25, ease: 'easeOut' }}
           onClick={() => project.link && window.open(project.link, '_blank', 'noopener,noreferrer')}
         >
@@ -164,12 +155,30 @@ export default function Projects() {
           <ProjectCard project={projects[0]} index={0} featured />
         </div>
 
-        {/* Remaining projects in a grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {projects.slice(1).map((project, i) => (
-            <ProjectCard key={project.index} project={project} index={i + 1} />
-          ))}
-        </div>
+        {/* GitHub CTA card */}
+        <Reveal delay={100}>
+          <motion.a
+            href="https://github.com/Jay-Safan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-between rounded-lg px-8 py-6 border group"
+            style={{ border: '1px solid rgb(var(--line))' }}
+            whileHover={{ y: -2, borderColor: 'rgb(var(--accent))' }}
+            transition={{ duration: 0.2 }}
+          >
+            <div>
+              <p className="text-sm font-medium text-[rgb(var(--ink))] mb-1">More on GitHub</p>
+              <p className="text-xs text-[rgb(var(--muted))]">See what else I'm building → github.com/Jay-Safan</p>
+            </div>
+            <motion.span
+              className="text-[rgb(var(--muted))] group-hover:text-[rgb(var(--accent))] transition-colors text-xl shrink-0 ml-6"
+              whileHover={{ x: 4 }}
+              transition={{ duration: 0.2 }}
+            >
+              ↗
+            </motion.span>
+          </motion.a>
+        </Reveal>
       </div>
     </section>
   )

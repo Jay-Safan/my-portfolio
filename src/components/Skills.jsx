@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Reveal } from './Reveal'
 import {
@@ -49,23 +50,28 @@ const groups = [
 ]
 
 function SkillIcon({ name, icon: Icon, color, delay }) {
+  const [hovered, setHovered] = useState(false)
+  const activeColor = color || 'rgb(var(--accent))'
+
   return (
     <motion.div
-      className="group flex items-center gap-3 cursor-default"
+      className="flex items-center gap-3 cursor-default"
       initial={{ opacity: 0, x: -10 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay, ease: 'easeOut' }}
       whileHover={{ x: 4 }}
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
     >
       <motion.span
-        className="w-9 h-9 rounded border border-[rgb(var(--line))] flex items-center justify-center shrink-0"
-        whileHover={{ borderColor: 'rgb(var(--accent))', scale: 1.08 }}
+        className="w-9 h-9 rounded border flex items-center justify-center shrink-0 transition-colors duration-200"
+        animate={{ borderColor: hovered ? activeColor : 'rgb(var(--line))' }}
         transition={{ duration: 0.2 }}
       >
-        <Icon size={18} style={{ color: 'rgb(var(--muted))' }} />
+        <Icon size={18} style={{ color: hovered ? activeColor : 'rgb(var(--muted))', transition: 'color 0.2s' }} />
       </motion.span>
-      <span className="text-sm text-[rgb(var(--muted))] group-hover:text-[rgb(var(--ink))] transition-colors">
+      <span style={{ color: hovered ? 'rgb(var(--ink))' : 'rgb(var(--muted))', transition: 'color 0.2s' }} className="text-sm">
         {name}
       </span>
     </motion.div>

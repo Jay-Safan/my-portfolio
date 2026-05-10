@@ -3,6 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0e1118" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#faf9f7" media="(prefers-color-scheme: light)" />
+    <link rel="preload" as="image" href="/portrait.jpg" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t === 'dark' || t === null) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary -->
@@ -20,6 +31,13 @@
 
     <!-- Canonical -->
     <link rel="canonical" href="https://jaysafan.dev" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Muhammad Jay Safan — Fullstack & Mobile Developer" />
+    <meta name="twitter:description" content="Fullstack and mobile developer open to fulltime, remote, and freelance roles. Experienced with React, Laravel, Flutter, and more." />
+    <meta name="twitter:image" content="https://jaysafan.dev/portrait.jpg" />
+    <meta property="og:image:alt" content="Muhammad Jay Safan — Fullstack & Mobile Developer" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
