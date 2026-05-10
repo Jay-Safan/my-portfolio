@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+  --paper: 250 249 247;
+  --ink: 14 21 37;
+  --muted: 90 96 110;
+  --line: 224 220 212;
+  --accent: 91 124 106;
+}
+html.dark {
+  --paper: 14 17 24;
+  --ink: 240 238 232;
+  --muted: 156 162 175;
+  --line: 36 41 53;
+}
+html, body { background: rgb(var(--paper)); color: rgb(var(--ink)); }
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; }
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.stripe-bg {
+  background-image: repeating-linear-gradient(135deg, rgb(var(--line) / .55) 0 1px, transparent 1px 14px);
+}
+.underline-accent {
+  background-image: linear-gradient(transparent 62%, rgb(var(--accent) / .35) 62%);
+  background-repeat: no-repeat;
+}
+::selection { background: rgb(var(--accent) / .3); }
