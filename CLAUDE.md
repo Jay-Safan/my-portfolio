@@ -9,7 +9,7 @@ Domain: `jaysafan.dev`
 - **React** (via Vite, `--template react`)
 - **Tailwind CSS** (via `@tailwindcss/vite` plugin)
 - **Geist + Geist Mono** fonts (Google Fonts CDN in index.html)
-- **No backend** — contact form to be wired to Formspree or EmailJS later
+- **No backend** — contact form wired to Formspree (`formspree.io/f/mdabppwp`)
 
 ## Setup Status — All Done
 - [x] Vite + React scaffolded
@@ -83,10 +83,10 @@ All colors are CSS variable-driven:
 
 ### About.jsx
 - Section id: `about`
-- Left col (4/12): portrait placeholder (stripe-bg, aspect-[4/5])
+- Left col (4/12): portrait placeholder (stripe-bg, aspect-[4/5]) — real photo still needed
 - Right col (8/12): heading "Engineer by training, builder by habit."
-- Bio paragraphs — 2 filled, 2 with [FILL IN] placeholders
-- Stats row: Based in (Kuala Lumpur MY), Working as (Fullstack dev), Open to (Roles & freelance)
+- Bio paragraphs — all filled in (ErgoPrima internship, fullstack experience, UPM final year, cloud/AI goals)
+- Stats row: Working as (Fullstack Intern), Open to (Fulltime · Remote · Freelance), Availability (Open to opportunities)
 
 ### Contact.jsx
 - Section id: `contact`
@@ -94,7 +94,7 @@ All colors are CSS variable-driven:
 - Right col: form with name, email, message fields
 - Validation: inline errors on blur, all fields required, email regex, message min 10 chars
 - Submit states: idle → sending → sent (success panel with personalized name)
-- **TODO**: wire to Formspree or EmailJS (currently simulated with setTimeout)
+- Wired to Formspree (`formspree.io/f/mdabppwp`), real email `jay.safan4@gmail.com`
 
 ### Footer.jsx
 - Logo + copyright "© [year] · Built in Kuala Lumpur."
@@ -121,8 +121,10 @@ npm run preview  # preview production build
 ## Pending TODOs
 - [ ] Replace portrait placeholder with real photo in About
 - [ ] Fill in 2nd and 3rd projects with real content
-- [ ] Fill in About section personal sentences
-- [ ] Wire contact form to Formspree or EmailJS
-- [ ] Add real GitHub and LinkedIn URLs in Footer and Navbar
-- [ ] Update email from `hello@example.com` to real email
-- [ ] Dark mode toggle (currently hardcoded to dark via TWEAK_DEFAULTS)
+
+## Completed
+- [x] Fill in About section personal sentences
+- [x] Wire contact form to Formspree (`formspree.io/f/mdabppwp`)
+- [x] Add real GitHub (`github.com/Jay-Safan`) and LinkedIn URLs in Footer
+- [x] Update email to `jay.safan4@gmail.com` across Contact and Footer
+- [x] Dark mode toggle (localStorage-persisted, respects system preference)
