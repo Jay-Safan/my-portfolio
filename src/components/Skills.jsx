@@ -40,14 +40,9 @@ const groups = [
     ],
   },
   {
-    label: 'Tools',
+    label: 'Tools & Other',
     skills: [
       { name: 'Git', icon: SiGit, color: '#F05032' },
-    ],
-  },
-  {
-    label: 'Learning',
-    skills: [
       { name: 'AWS', icon: FaAws, color: '#FF9900' },
     ],
   },
@@ -86,7 +81,7 @@ export default function Skills() {
           <h2 className="text-3xl font-semibold text-[rgb(var(--ink))] mb-12">Tools I work with</h2>
         </Reveal>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
           {groups.map((group, gi) => (
             <Reveal key={group.label} delay={gi * 80}>
               <p className="font-mono text-xs text-[rgb(var(--muted))] uppercase tracking-widest mb-5">

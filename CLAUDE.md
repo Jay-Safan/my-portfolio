@@ -1,7 +1,7 @@
 # Jay's Portfolio — Claude Code Context
 
 ## Project Overview
-Personal portfolio for **Muhammad Jay Safan**, a fullstack & mobile developer based in Kuala Lumpur.
+Personal portfolio for **Muhammad Jay Safan**, a fullstack & mobile developer open to remote and global opportunities.
 Single page with sections: Hero, Projects, Skills, About, Contact, Footer.
 Domain: `jaysafan.dev`
 
@@ -51,18 +51,18 @@ All colors are CSS variable-driven:
 - Active section tracking via IntersectionObserver on section IDs: `home`, `projects`, `skills`, `about`, `contact`
 - Active link shows accent underline
 - Mobile hamburger menu (toggle open/close)
-- Logo: dot + "Jay" + `/ KL` in mono
+- Logo: dot + "Jay"
 - Links: Work → `#projects`, Stack → `#skills`, About → `#about`, Contact → `#contact`
 - CTA: "Hire me →" on desktop
 
 ### Hero.jsx
 - Section id: `home`
-- Mono label: "Fullstack Developer · Kuala Lumpur"
+- Mono label: "Fullstack & Mobile Developer · Fulltime · Remote · Freelance"
 - H1: `Hi, I'm Jay. I build clean, fast, and purposeful web apps.` ("purposeful" in italic accent color)
 - "Jay" has `.underline-accent` highlight
 - Subtext: "Software engineer focused on shipping reliable fullstack products — React on the front, PHP & Node on the back. Currently open to fullstack roles and freelance work."
 - CTAs: "View my work ↓" (filled, links to #projects) + "Get in touch" (outlined, links to #contact)
-- Availability badge: green pulsing dot + "Available May 2026"
+- Availability badge: green pulsing dot + "Freelance — open now" · "Available · Aug 2026"
 
 ### Projects.jsx (ProjectCard inline)
 - Section id: `projects`
@@ -71,7 +71,7 @@ All colors are CSS variable-driven:
 - Image hover shows "View live ↗" or "Coming soon" bar sliding up
 
 **Projects data:**
-1. ErgoPrima Company Website — Shipped — PHP 8, Tailwind CSS, Vanilla JS, MySQL
+1. ErgoPrima Company Website — Shipped — PHP 8, Tailwind CSS, Vanilla JS, Apache
 2. [Project Name] — In progress — placeholder
 3. [Project Name] — Side project — placeholder
 

@@ -10,7 +10,7 @@ const projects = [
     tagline: 'Corporate web presence for an ergonomics brand.',
     description:
       'Rebuilt the full company website from scratch during my internship — product pages, services, and contact flows. Focused on performance, clean design, and mobile-first layout.',
-    tech: ['PHP 8', 'Tailwind CSS', 'Vanilla JS', 'MySQL'],
+    tech: ['PHP 8', 'Tailwind CSS', 'Vanilla JS', 'Apache'],
     status: 'Shipped',
     link: 'https://www.ergoprima.com/',
   },
@@ -33,7 +33,67 @@ const statusColor = {
   'Coming soon': 'bg-[rgb(var(--muted)/0.1)] text-[rgb(var(--muted))] border border-[rgb(var(--muted)/0.2)]',
 }
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project, index, featured = false }) {
+  if (featured) {
+    return (
+      <Reveal delay={0}>
+        <motion.div
+          className="group relative border border-[rgb(var(--line))] rounded-lg overflow-hidden cursor-pointer"
+          whileHover={{ y: -4, boxShadow: '0 16px 40px rgb(0 0 0 / 0.1)' }}
+          transition={{ duration: 0.25, ease: 'easeOut' }}
+          onClick={() => project.link && window.open(project.link, '_blank', 'noopener,noreferrer')}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-5">
+            {/* Image — takes 3/5 columns on desktop */}
+            <div className="relative aspect-video md:aspect-auto md:min-h-[280px] overflow-hidden md:col-span-3">
+              {project.image ? (
+                <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top" />
+              ) : (
+                <div className="w-full h-full stripe-bg flex items-center justify-center">
+                  <span className="font-mono text-5xl font-bold text-[rgb(var(--line))]">{project.index}</span>
+                </div>
+              )}
+              <motion.div
+                className="absolute inset-x-0 bottom-0 h-10 bg-[rgb(var(--ink))] flex items-center justify-center"
+                initial={{ y: '100%' }}
+                whileHover={{ y: 0 }}
+                transition={{ duration: 0.25, ease: 'easeOut' }}
+              >
+                <span className="text-[rgb(var(--paper))] text-sm font-medium">
+                  {project.link ? 'View live ↗' : 'Coming soon'}
+                </span>
+              </motion.div>
+            </div>
+
+            {/* Content — takes 2/5 columns on desktop */}
+            <div className="p-8 flex flex-col justify-center md:col-span-2">
+              <div className="flex items-start justify-between gap-4 mb-3">
+                <h3 className="font-semibold text-[rgb(var(--ink))] leading-snug text-lg">{project.title}</h3>
+                <span className={`shrink-0 text-xs px-2 py-0.5 rounded-full font-medium ${statusColor[project.status]}`}>
+                  {project.status}
+                </span>
+              </div>
+              <p className="text-sm text-[rgb(var(--accent))] font-medium mb-2">{project.tagline}</p>
+              <p className="text-sm text-[rgb(var(--muted))] leading-relaxed mb-4">{project.description}</p>
+              {project.tech.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map(t => (
+                    <span
+                      key={t}
+                      className="font-mono text-xs px-2 py-0.5 rounded bg-[rgb(var(--line)/0.5)] text-[rgb(var(--muted))]"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </motion.div>
+      </Reveal>
+    )
+  }
+
   return (
     <Reveal delay={index * 100}>
       <motion.div
@@ -99,9 +159,15 @@ export default function Projects() {
           <h2 className="text-3xl font-semibold text-[rgb(var(--ink))] mb-12">Selected projects</h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.index} project={project} index={i} />
+        {/* Featured first project */}
+        <div className="mb-6">
+          <ProjectCard project={projects[0]} index={0} featured />
+        </div>
+
+        {/* Remaining projects in a grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {projects.slice(1).map((project, i) => (
+            <ProjectCard key={project.index} project={project} index={i + 1} />
           ))}
         </div>
       </div>

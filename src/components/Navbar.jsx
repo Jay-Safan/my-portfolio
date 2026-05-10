@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const links = [
   { label: 'Work', href: '#projects' },
@@ -67,7 +68,7 @@ export default function Navbar() {
       if (!el) return
       const io = new IntersectionObserver(
         ([entry]) => { if (entry.isIntersecting) setActive(id) },
-        { threshold: 0.4 }
+        { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
       )
       io.observe(el)
       observers.push(io)
@@ -90,7 +91,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-1">
           {links.map(({ label, href }) => {
             const id = href.slice(1)
             const isActive = active === id
@@ -98,16 +99,13 @@ export default function Navbar() {
               <a
                 key={href}
                 href={href}
-                className={`text-sm transition-colors relative ${
+                className={`text-sm transition-colors px-3 py-1.5 rounded-full ${
                   isActive
-                    ? 'text-[rgb(var(--ink))]'
+                    ? 'bg-[rgb(var(--line)/0.6)] text-[rgb(var(--ink))]'
                     : 'text-[rgb(var(--muted))] hover:text-[rgb(var(--ink))]'
                 }`}
               >
                 {label}
-                {isActive && (
-                  <span className="absolute -bottom-0.5 left-0 right-0 h-px bg-[rgb(var(--accent))]" />
-                )}
               </a>
             )
           })}
@@ -116,14 +114,14 @@ export default function Navbar() {
           <button
             onClick={toggleDark}
             aria-label="Toggle dark mode"
-            className="w-8 h-8 flex items-center justify-center rounded border border-[rgb(var(--line))] text-[rgb(var(--muted))] hover:text-[rgb(var(--ink))] hover:border-[rgb(var(--accent))] transition-colors"
+            className="ml-4 w-8 h-8 flex items-center justify-center rounded border border-[rgb(var(--line))] text-[rgb(var(--muted))] hover:text-[rgb(var(--ink))] hover:border-[rgb(var(--accent))] transition-colors"
           >
             {dark ? <SunIcon /> : <MoonIcon />}
           </button>
 
           <a
             href="#contact"
-            className="px-4 py-1.5 text-sm font-medium rounded border border-[rgb(var(--accent))] text-[rgb(var(--accent))] hover:bg-[rgb(var(--accent)/0.08)] transition-colors"
+            className="ml-2 px-4 py-1.5 text-sm font-medium rounded border border-[rgb(var(--accent))] text-[rgb(var(--accent))] hover:bg-[rgb(var(--accent)/0.08)] transition-colors"
           >
             Hire me →
           </a>
@@ -152,27 +150,42 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-[rgb(var(--paper))] border-b border-[rgb(var(--line))] px-6 pb-4 flex flex-col gap-4">
-          {links.map(({ label, href }) => (
-            <a
-              key={href}
-              href={href}
-              onClick={() => setMenuOpen(false)}
-              className="text-sm text-[rgb(var(--muted))] hover:text-[rgb(var(--ink))] transition-colors"
-            >
-              {label}
-            </a>
-          ))}
-          <a
-            href="#contact"
-            onClick={() => setMenuOpen(false)}
-            className="text-sm font-medium text-[rgb(var(--accent))]"
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="md:hidden overflow-hidden bg-[rgb(var(--paper))] border-b border-[rgb(var(--line))]"
           >
-            Hire me →
-          </a>
-        </div>
-      )}
+            <div className="px-6 pb-4 pt-2 flex flex-col gap-4">
+              {links.map(({ label, href }) => (
+                <a
+                  key={href}
+                  href={href}
+                  onClick={() => setMenuOpen(false)}
+                  className={`text-sm transition-colors ${
+                    active === href.slice(1)
+                      ? 'text-[rgb(var(--ink))]'
+                      : 'text-[rgb(var(--muted))] hover:text-[rgb(var(--ink))]'
+                  }`}
+                >
+                  {label}
+                </a>
+              ))}
+              <a
+                href="#contact"
+                onClick={() => setMenuOpen(false)}
+                className="text-sm font-medium text-[rgb(var(--accent))]"
+              >
+                Hire me →
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
