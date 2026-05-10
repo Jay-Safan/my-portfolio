@@ -19,10 +19,16 @@ export default function About() {
           {/* Portrait */}
           <Reveal className="md:col-span-4" delay={0}>
             <motion.div
-              className="aspect-[4/5] rounded-lg stripe-bg border border-[rgb(var(--line))]"
+              className="aspect-[4/5] rounded-lg overflow-hidden border border-[rgb(var(--line))]"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
-            />
+            >
+              <img
+                src="/portrait.jpg"
+                alt="Muhammad Jay Safan"
+                className="w-full h-full object-cover object-top"
+              />
+            </motion.div>
           </Reveal>
 
           {/* Bio */}

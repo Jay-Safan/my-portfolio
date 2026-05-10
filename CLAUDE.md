@@ -119,7 +119,7 @@ npm run preview  # preview production build
 ```
 
 ## Pending TODOs
-- [ ] Replace portrait placeholder with real photo in About
+- [x] Replace portrait placeholder with real photo in About (`public/portrait.jpg`)
 - [ ] Fill in 2nd and 3rd projects with real content
 
 ## Completed
