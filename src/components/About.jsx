@@ -15,9 +15,37 @@ export default function About() {
           <p className="font-mono text-xs tracking-widest text-[rgb(var(--muted))] uppercase mb-3">About</p>
         </Reveal>
 
-        <div className="grid grid-cols-12 gap-6 md:gap-12 items-start">
-          {/* Portrait */}
-          <Reveal className="col-span-5 sm:col-span-4" delay={0}>
+        {/* Mobile: profile card row + stacked content */}
+        {/* Desktop: side-by-side portrait + bio */}
+
+        {/* Mobile profile card — hidden on md+ */}
+        <Reveal className="md:hidden" delay={0}>
+          <div className="flex items-center gap-4 mb-8">
+            <motion.div
+              className="w-20 h-20 rounded-full overflow-hidden border border-[rgb(var(--line))] shrink-0"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img
+                src="/portrait.jpg"
+                alt="Muhammad Jay Safan"
+                className="w-full h-full object-cover object-top"
+              />
+            </motion.div>
+            <div>
+              <h2 className="text-lg font-semibold text-[rgb(var(--ink))] leading-snug">
+                Engineer by training,
+              </h2>
+              <p className="text-lg font-semibold text-[rgb(var(--ink))] leading-snug">
+                builder by habit.
+              </p>
+            </div>
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-12 md:gap-12 items-start">
+          {/* Desktop portrait — hidden on mobile */}
+          <Reveal className="hidden md:block md:col-span-4" delay={0}>
             <motion.div
               className="aspect-[4/5] rounded-lg overflow-hidden border border-[rgb(var(--line))]"
               whileHover={{ scale: 1.02 }}
@@ -32,9 +60,10 @@ export default function About() {
           </Reveal>
 
           {/* Bio */}
-          <div className="col-span-7 sm:col-span-8">
-            <Reveal delay={80}>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[rgb(var(--ink))] mb-4 md:mb-6 leading-snug">
+          <div className="md:col-span-8">
+            {/* Desktop heading — hidden on mobile */}
+            <Reveal className="hidden md:block" delay={80}>
+              <h2 className="text-3xl font-semibold text-[rgb(var(--ink))] mb-6 leading-snug">
                 Engineer by training,<br />builder by habit.
               </h2>
             </Reveal>
