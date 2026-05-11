@@ -121,6 +121,7 @@ npm run preview  # preview production build
 ## Pending TODOs
 - [x] Replace portrait placeholder with real photo in About (`public/portrait.jpg`)
 - [ ] Fill in 2nd and 3rd projects with real content
+- [ ] Add "countries visited" section in About (options: flag row, interactive map, passport stamps — undecided)
 
 ## Completed
 - [x] Fill in About section personal sentences
@@ -128,3 +129,6 @@ npm run preview  # preview production build
 - [x] Add real GitHub (`github.com/Jay-Safan`) and LinkedIn URLs in Footer
 - [x] Update email to `jay.safan4@gmail.com` across Contact and Footer
 - [x] Dark mode toggle (localStorage-persisted, respects system preference)
+- [x] Live timezone widget in Contact section (visitor time vs Kuala Lumpur)
+- [x] Mobile responsive polish (About profile card layout, section spacing, skills grid)
+- [x] Clarified copy across Hero, About stats, Contact
