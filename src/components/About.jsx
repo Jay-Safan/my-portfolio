@@ -2,9 +2,9 @@ import { motion } from 'framer-motion'
 import { Reveal } from './Reveal'
 
 const stats = [
-  { label: 'Currently', value: 'Fullstack Intern @ ErgoPrima' },
-  { label: 'Internship ends', value: 'August 2026' },
-  { label: 'Availability', value: 'Freelance now · Available Aug 2026' },
+  { label: 'Currently', value: 'Interning @ ErgoPrima' },
+  { label: 'Freelance', value: 'Available now' },
+  { label: 'Full-time', value: 'From August 2026' },
 ]
 
 export default function About() {

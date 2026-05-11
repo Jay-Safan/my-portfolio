@@ -35,7 +35,7 @@ export default function Hero() {
       <div className="relative z-10 max-w-5xl mx-auto px-6 py-24 w-full">
         <motion.div variants={container} initial="hidden" animate="show" className="flex flex-col">
           <motion.p variants={item} className="font-mono text-[10px] sm:text-xs tracking-widest text-[rgb(var(--muted))] uppercase mb-6">
-            Fullstack &amp; Mobile Developer · Fulltime · Remote · Freelance
+            Fullstack &amp; Mobile Developer
           </motion.p>
 
           <motion.h1
@@ -50,10 +50,9 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p variants={item} className="text-lg text-[rgb(var(--muted))] max-w-xl leading-relaxed mb-10">
-            Software engineer focused on shipping reliable fullstack and mobile products. Currently
-            interning as a fullstack developer — rebuilding production websites and building internal
-            dashboard systems. Actively expanding into cloud and AI engineering. Open to fulltime
-            roles, remote positions, and freelance projects.
+            Software engineer who ships fullstack and mobile products — React on the front,
+            PHP &amp; Node on the back. Currently interning at ErgoPrima, open to freelance
+            now and full-time roles from August 2026.
           </motion.p>
 
           <motion.div variants={item} className="flex flex-wrap items-center gap-4">
@@ -81,10 +80,10 @@ export default function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[rgb(var(--accent))] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[rgb(var(--accent))]" />
               </span>
-              Freelance — open now
+              Freelance — available now
             </span>
             <span className="text-[rgb(var(--line))]">·</span>
-            <span className="text-sm text-[rgb(var(--muted))]">Available · Aug 2026</span>
+            <span className="text-sm text-[rgb(var(--muted))]">Full-time from Aug 2026</span>
           </motion.div>
         </motion.div>
       </div>

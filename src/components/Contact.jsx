@@ -63,7 +63,7 @@ export default function Contact() {
                 Have something<br />in mind?
               </h2>
               <p className="text-[rgb(var(--muted))] leading-relaxed mb-8">
-                Whether it's a fulltime role, a remote position, a freelance project, or just a question — I'd love to hear from you.
+                Got a role, project, or question? I'd love to hear from you.
               </p>
             </Reveal>
             <Reveal delay={80}>
