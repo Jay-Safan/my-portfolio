@@ -143,7 +143,7 @@ function ProjectCard({ project, index, featured = false }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24" style={{ fontFamily: "'Geist', sans-serif" }}>
+    <section id="projects" className="py-16 md:py-24" style={{ fontFamily: "'Geist', sans-serif" }}>
       <div className="max-w-5xl mx-auto px-6">
         <Reveal>
           <p className="font-mono text-xs tracking-widest text-[rgb(var(--muted))] uppercase mb-3">Work</p>
@@ -161,7 +161,7 @@ export default function Projects() {
             href="https://github.com/Jay-Safan"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-between rounded-lg px-8 py-6 border group"
+            className="flex items-center justify-between rounded-lg px-5 sm:px-8 py-6 border group"
             style={{ border: '1px solid rgb(var(--line))' }}
             whileHover={{ y: -2, borderColor: 'rgb(var(--accent))' }}
             transition={{ duration: 0.2 }}

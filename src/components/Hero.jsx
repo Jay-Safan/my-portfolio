@@ -27,20 +27,20 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center pt-14"
+      className="relative min-h-screen flex items-center pt-14 px-0"
       style={{ fontFamily: "'Geist', sans-serif" }}
     >
       <div className="absolute inset-0 dot-grid opacity-40 pointer-events-none" aria-hidden="true" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 py-24 w-full">
         <motion.div variants={container} initial="hidden" animate="show" className="flex flex-col">
-          <motion.p variants={item} className="font-mono text-xs tracking-widest text-[rgb(var(--muted))] uppercase mb-6">
+          <motion.p variants={item} className="font-mono text-[10px] sm:text-xs tracking-widest text-[rgb(var(--muted))] uppercase mb-6">
             Fullstack &amp; Mobile Developer · Fulltime · Remote · Freelance
           </motion.p>
 
           <motion.h1
             variants={item}
-            className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[rgb(var(--ink))] leading-tight tracking-tight mb-6 max-w-3xl"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-[rgb(var(--ink))] leading-tight tracking-tight mb-6 max-w-3xl"
           >
             Hi, I'm{' '}
             <span className="underline-accent">Jay Safan</span>

@@ -80,14 +80,14 @@ function SkillIcon({ name, icon: Icon, color, delay }) {
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 border-t border-[rgb(var(--line))]" style={{ fontFamily: "'Geist', sans-serif" }}>
+    <section id="skills" className="py-16 md:py-24 border-t border-[rgb(var(--line))]" style={{ fontFamily: "'Geist', sans-serif" }}>
       <div className="max-w-5xl mx-auto px-6">
         <Reveal>
           <p className="font-mono text-xs tracking-widest text-[rgb(var(--muted))] uppercase mb-3">Stack</p>
           <h2 className="text-3xl font-semibold text-[rgb(var(--ink))] mb-12">Tools I work with</h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-10">
           {groups.map((group, gi) => (
             <Reveal key={group.label} delay={gi * 80}>
               <p className="font-mono text-xs text-[rgb(var(--muted))] uppercase tracking-widest mb-5">
