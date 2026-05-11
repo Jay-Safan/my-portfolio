@@ -20,7 +20,7 @@ export default function Footer() {
         </motion.div>
 
         <p className="text-xs text-[rgb(var(--muted))]">
-          © {year} · Muhammad Jay Safan.
+          © {year} · Muhammad Jay Safan · Kuala Lumpur, Malaysia.
         </p>
 
         {/* Social links */}

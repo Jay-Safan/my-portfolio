@@ -76,6 +76,11 @@ export default function Contact() {
                 jay.safan4@gmail.com
               </motion.a>
             </Reveal>
+            <Reveal delay={120}>
+              <p className="text-xs text-[rgb(var(--muted))] mt-3 font-mono">
+                Based in Malaysia · GMT+8
+              </p>
+            </Reveal>
             <Reveal delay={160}>
               <div className="flex items-center gap-5 mt-6">
                 <motion.a
