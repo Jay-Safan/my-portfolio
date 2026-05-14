@@ -13,17 +13,14 @@ export default function ProjectCard({ project, index, featured = false }) {
   if (featured) {
     return (
       <Reveal delay={0}>
-        <motion.div
-          className="group relative rounded-lg overflow-hidden cursor-pointer"
+        <motion.a
+          href={project.link || undefined}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative rounded-lg overflow-hidden cursor-pointer block"
           style={{ border: '1px solid rgb(var(--line))' }}
           whileHover={{ y: -4, boxShadow: '0 16px 40px rgb(0 0 0 / 0.1)', borderColor: 'rgb(var(--accent))' }}
           transition={{ duration: 0.25, ease: 'easeOut' }}
-          onClick={() => {
-            if (project.link) {
-              const w = window.open(project.link, '_blank')
-              if (w) w.opener = null
-            }
-          }}
         >
           <div className="grid grid-cols-1 md:grid-cols-5">
             {/* Image — takes 3/5 columns on desktop */}
@@ -66,23 +63,20 @@ export default function ProjectCard({ project, index, featured = false }) {
               )}
             </div>
           </div>
-        </motion.div>
+        </motion.a>
       </Reveal>
     )
   }
 
   return (
     <Reveal delay={index * 100}>
-      <motion.div
-        className="group relative border border-[rgb(var(--line))] rounded-lg overflow-hidden cursor-pointer h-full"
+      <motion.a
+        href={project.link || undefined}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative border border-[rgb(var(--line))] rounded-lg overflow-hidden cursor-pointer block h-full"
         whileHover={{ y: -4, boxShadow: '0 16px 40px rgb(0 0 0 / 0.1)' }}
         transition={{ duration: 0.25, ease: 'easeOut' }}
-        onClick={() => {
-          if (project.link) {
-            const w = window.open(project.link, '_blank')
-            if (w) w.opener = null
-          }
-        }}
       >
         {/* Image */}
         <div className="relative aspect-video overflow-hidden">
@@ -122,7 +116,7 @@ export default function ProjectCard({ project, index, featured = false }) {
             </div>
           )}
         </div>
-      </motion.div>
+      </motion.a>
     </Reveal>
   )
 }
