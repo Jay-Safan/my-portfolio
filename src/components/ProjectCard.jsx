@@ -30,16 +30,11 @@ export default function ProjectCard({ project, index, featured = false }) {
                   <span className="font-mono text-5xl font-bold text-[rgb(var(--line))]">{project.index}</span>
                 </div>
               )}
-              <motion.div
-                className="absolute inset-x-0 bottom-0 h-10 bg-[rgb(var(--ink))] flex items-center justify-center"
-                initial={{ y: '100%' }}
-                whileHover={{ y: 0 }}
-                transition={{ duration: 0.25, ease: 'easeOut' }}
-              >
+              <div className="absolute inset-x-0 bottom-0 h-10 bg-[rgb(var(--ink))] flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-250 ease-out">
                 <span className="text-[rgb(var(--paper))] text-sm font-medium">
                   {project.link ? (project.linkLabel || 'View live ↗') : 'Coming soon'}
                 </span>
-              </motion.div>
+              </div>
             </div>
 
             {/* Content — takes 2/5 columns on desktop */}
@@ -88,16 +83,11 @@ export default function ProjectCard({ project, index, featured = false }) {
               <span className="font-mono text-5xl font-bold text-[rgb(var(--line))]">{project.index}</span>
             </div>
           )}
-          <motion.div
-            className="absolute inset-x-0 bottom-0 h-10 bg-[rgb(var(--ink))] flex items-center justify-center"
-            initial={{ y: '100%' }}
-            whileHover={{ y: 0 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
-          >
+          <div className="absolute inset-x-0 bottom-0 h-10 bg-[rgb(var(--ink))] flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-250 ease-out">
             <span className="text-[rgb(var(--paper))] text-sm font-medium">
               {project.link ? (project.linkLabel || 'View live ↗') : 'Coming soon'}
             </span>
-          </motion.div>
+          </div>
         </div>
 
         <div className="p-6">
