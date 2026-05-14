@@ -50,7 +50,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p variants={item} className="text-lg text-[rgb(var(--muted))] max-w-xl leading-relaxed mb-10">
-            Software engineer who ships fullstack and mobile products — React on the front,
+            Software engineer who ships fullstack and mobile products. React on the front,
             PHP &amp; Node on the back. Currently interning at ErgoPrima, open to freelance
             now and full-time roles from August 2026.
           </motion.p>
@@ -80,7 +80,7 @@ export default function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[rgb(var(--accent))] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[rgb(var(--accent))]" />
               </span>
-              Freelance — available now
+              Freelance · available now
             </span>
             <span className="text-[rgb(var(--line))]">·</span>
             <span className="text-sm text-[rgb(var(--muted))]">Full-time from Aug 2026</span>

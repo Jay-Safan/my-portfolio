@@ -32,10 +32,13 @@ my-portfolio/
 │       ├── Reveal.jsx       ← scroll animation wrapper (IntersectionObserver)
 │       ├── Navbar.jsx
 │       ├── Hero.jsx
-│       ├── Projects.jsx     ← ProjectCard inline
+│       ├── Projects.jsx     ← project data, renders ProjectCard
+│       ├── ProjectCard.jsx  ← extracted project card component
 │       ├── Skills.jsx       ← SkillIcon inline
 │       ├── About.jsx
 │       ├── Contact.jsx
+│       ├── TimeZoneWidget.jsx ← extracted from Contact, React.memo wrapped
+│       ├── icons.jsx        ← shared GitHubIcon, LinkedInIcon, EmailIcon
 │       └── Footer.jsx
 ```
 
@@ -64,21 +67,24 @@ All colors are CSS variable-driven:
 - CTAs: "View my work ↓" (filled, links to #projects) + "Get in touch" (outlined, links to #contact)
 - Availability badge: green pulsing dot + "Freelance — open now" · "Available · Aug 2026"
 
-### Projects.jsx (ProjectCard inline)
+### Projects.jsx + ProjectCard.jsx
 - Section id: `projects`
-- 3 projects in data array (see below)
-- Each card: index number, status badge, image placeholder (stripe-bg), title, tagline, description, tech stack pills, optional link
-- Image hover shows "View live ↗" or "Coming soon" bar sliding up
+- ProjectCard extracted to its own file with statusColor map
+- All projects render as featured (wide) cards for consistency
+- Image hover shows custom linkLabel or "View live ↗" / "Coming soon"
 
 **Projects data:**
-1. ErgoPrima Company Website — Shipped — PHP 8, Tailwind CSS, Vanilla JS, Apache
-2. [Project Name] — In progress — placeholder
-3. [Project Name] — Side project — placeholder
+1. ErgoPrima Company Website — Shipped — PHP 8, Tailwind CSS, Vanilla JS, Apache — links to ergoprima.com
+2. PutraSportsHub — Completed — Flutter, Firebase, Dart — links to demo video on Google Drive
 
 ### Skills.jsx (SkillIcon inline)
 - Section id: `skills`
-- 3 groups: Frontend (React, TypeScript, Tailwind CSS), Backend (Laravel, PHP, Node.js, MySQL, REST APIs), Tools (Git)
-- Each skill: monogram badge (2-letter initials in a square) + label
+- 4 groups in a 2x2 / 4-col grid:
+  - Frontend & Mobile: React, React Native, Expo, Vue.js, Flutter, TypeScript, Tailwind CSS
+  - Backend: Laravel, PHP, Node.js, Express, MongoDB, MySQL, Firebase, REST APIs
+  - Languages: JavaScript, Python, Java, Dart
+  - Tools & Other: Git, AWS, Docker
+- Each skill: icon badge (react-icons) + label
 - Hover: badge border + text turns accent color
 
 ### About.jsx
@@ -120,7 +126,8 @@ npm run preview  # preview production build
 
 ## Pending TODOs
 - [x] Replace portrait placeholder with real photo in About (`public/portrait.jpg`)
-- [ ] Fill in 2nd and 3rd projects with real content
+- [x] Fill in 2nd project (PutraSportsHub) with real content
+- [ ] Add 3rd project with real content
 - [ ] Add "countries visited" section in About (options: flag row, interactive map, passport stamps — undecided)
 
 ## Completed
@@ -132,3 +139,6 @@ npm run preview  # preview production build
 - [x] Live timezone widget in Contact section (visitor time vs Kuala Lumpur)
 - [x] Mobile responsive polish (About profile card layout, section spacing, skills grid)
 - [x] Clarified copy across Hero, About stats, Contact
+- [x] Refactored: extracted TimeZoneWidget, ProjectCard, shared icons into separate files
+- [x] Updated Skills section with full skill set from CV (4 groups, real icons)
+- [x] Removed em dashes from all user-facing copy
