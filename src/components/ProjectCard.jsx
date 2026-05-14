@@ -18,7 +18,12 @@ export default function ProjectCard({ project, index, featured = false }) {
           style={{ border: '1px solid rgb(var(--line))' }}
           whileHover={{ y: -4, boxShadow: '0 16px 40px rgb(0 0 0 / 0.1)', borderColor: 'rgb(var(--accent))' }}
           transition={{ duration: 0.25, ease: 'easeOut' }}
-          onClick={() => project.link && window.open(project.link, '_blank', 'noopener,noreferrer')}
+          onClick={() => {
+            if (project.link) {
+              const w = window.open(project.link, '_blank')
+              if (w) w.opener = null
+            }
+          }}
         >
           <div className="grid grid-cols-1 md:grid-cols-5">
             {/* Image — takes 3/5 columns on desktop */}
@@ -72,7 +77,12 @@ export default function ProjectCard({ project, index, featured = false }) {
         className="group relative border border-[rgb(var(--line))] rounded-lg overflow-hidden cursor-pointer h-full"
         whileHover={{ y: -4, boxShadow: '0 16px 40px rgb(0 0 0 / 0.1)' }}
         transition={{ duration: 0.25, ease: 'easeOut' }}
-        onClick={() => project.link && window.open(project.link, '_blank', 'noopener,noreferrer')}
+        onClick={() => {
+          if (project.link) {
+            const w = window.open(project.link, '_blank')
+            if (w) w.opener = null
+          }
+        }}
       >
         {/* Image */}
         <div className="relative aspect-video overflow-hidden">
