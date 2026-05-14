@@ -78,25 +78,17 @@ export default function About() {
 
             <Reveal delay={200}>
               <p className="text-sm md:text-base text-[rgb(var(--muted))] leading-relaxed mb-4">
-                My experience spans the full stack, from PHP/Laravel backends and React frontends to
-                mobile apps with Flutter and React Native. I care about building things that actually
-                get used and make a real difference to the people running them.
+                My experience spans the full stack, from PHP backends and React frontends to mobile
+                apps. For my final year project at UPM, I built PutraSportsHub, a campus sports
+                booking system with facility reservations, tournaments, and a referee marketplace.
+                I care about building things that actually get used.
               </p>
             </Reveal>
 
             <Reveal delay={240}>
-              <p className="text-sm md:text-base text-[rgb(var(--muted))] leading-relaxed mb-4">
-                I'm a final year Software Engineering student at Universiti Putra Malaysia, graduating
-                with honours. Building real products alongside my degree has always been the priority.
-                I'd rather ship something than just study theory.
-              </p>
-            </Reveal>
-
-            <Reveal delay={280}>
               <p className="text-sm md:text-base text-[rgb(var(--muted))] leading-relaxed mb-10">
-                Beyond the day-to-day, I'm actively expanding into cloud and AI engineering. These are
-                the natural next layer for any serious software engineer. My goal is to
-                build products that are not just functional, but scalable and intelligent.
+                I'm graduating with honours and actively expanding into cloud and AI engineering.
+                My goal is to build products that are not just functional, but scalable and intelligent.
               </p>
             </Reveal>
 
