@@ -164,7 +164,18 @@ export default function Navbar() {
             aria-label="Toggle dark mode"
             className="w-8 h-8 flex items-center justify-center rounded-lg cursor-pointer text-[rgb(var(--muted))] hover:text-[rgb(var(--ink))] transition-colors duration-200"
           >
-            {dark ? <SunIcon /> : <MoonIcon />}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={dark ? 'sun' : 'moon'}
+                initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
+                transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+                className="flex items-center justify-center"
+              >
+                {dark ? <SunIcon /> : <MoonIcon />}
+              </motion.span>
+            </AnimatePresence>
           </button>
 
           <a
@@ -192,7 +203,18 @@ export default function Navbar() {
             aria-label="Toggle dark mode"
             className="w-8 h-8 flex items-center justify-center rounded-lg text-[rgb(var(--muted))] hover:text-[rgb(var(--ink))] transition-colors"
           >
-            {dark ? <SunIcon /> : <MoonIcon />}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={dark ? 'sun' : 'moon'}
+                initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
+                transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+                className="flex items-center justify-center"
+              >
+                {dark ? <SunIcon /> : <MoonIcon />}
+              </motion.span>
+            </AnimatePresence>
           </button>
 
           <button
