@@ -61,7 +61,7 @@ export default function Contact() {
           <div>
             <Reveal>
               <p className="font-mono text-xs tracking-widest text-[rgb(var(--muted))] uppercase mb-3">Contact</p>
-              <h2 className="text-3xl font-semibold text-[rgb(var(--ink))] mb-4 leading-snug">
+              <h2 className="text-2xl sm:text-3xl font-semibold text-[rgb(var(--ink))] mb-4 leading-snug">
                 Have something<br />in mind?
               </h2>
               <p className="text-[rgb(var(--muted))] leading-relaxed mb-8">
@@ -118,7 +118,7 @@ export default function Contact() {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, ease: 'easeOut' }}
-                  className="border border-[rgb(var(--line))] rounded-lg p-8 text-center"
+                  className="border border-[rgb(var(--line)/0.7)] rounded-lg p-8 text-center bg-[rgb(var(--paper)/0.5)] backdrop-blur-lg"
                 >
                   <motion.svg
                     viewBox="0 0 52 52"
@@ -181,7 +181,7 @@ export default function Contact() {
                           onBlur={handleBlur}
                           rows={5}
                           placeholder="What's on your mind?"
-                          className={`w-full px-4 py-2.5 text-sm rounded border bg-transparent text-[rgb(var(--ink))] placeholder:text-[rgb(var(--muted)/0.5)] outline-none focus:border-[rgb(var(--accent))] transition-colors resize-none ${
+                          className={`w-full px-4 py-2.5 text-sm rounded-lg border bg-transparent text-[rgb(var(--ink))] placeholder:text-[rgb(var(--muted)/0.5)] outline-none focus:border-[rgb(var(--accent))] transition-colors resize-none ${
                             visibleErrors.message ? 'border-red-400' : 'border-[rgb(var(--line))]'
                           }`}
                         />
@@ -193,7 +193,7 @@ export default function Contact() {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           placeholder={field === 'email' ? 'you@example.com' : 'Your name'}
-                          className={`w-full px-4 py-2.5 text-sm rounded border bg-transparent text-[rgb(var(--ink))] placeholder:text-[rgb(var(--muted)/0.5)] outline-none focus:border-[rgb(var(--accent))] transition-colors ${
+                          className={`w-full px-4 py-2.5 text-sm rounded-lg border bg-transparent text-[rgb(var(--ink))] placeholder:text-[rgb(var(--muted)/0.5)] outline-none focus:border-[rgb(var(--accent))] transition-colors ${
                             visibleErrors[field] ? 'border-red-400' : 'border-[rgb(var(--line))]'
                           }`}
                         />
@@ -219,7 +219,7 @@ export default function Contact() {
                     disabled={status === 'sending'}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.97 }}
-                    className="px-6 py-3 bg-[rgb(var(--ink))] text-[rgb(var(--paper))] rounded font-medium text-sm disabled:opacity-50 transition-opacity"
+                    className="px-6 py-3 bg-[rgb(var(--ink))] text-[rgb(var(--paper))] rounded-lg font-medium text-sm disabled:opacity-50 transition-opacity"
                   >
                     {status === 'sending' ? 'Sending…' : status === 'error' ? 'Failed, try again' : 'Send message'}
                   </motion.button>

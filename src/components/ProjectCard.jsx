@@ -2,11 +2,11 @@ import { motion } from 'framer-motion'
 import { Reveal } from './Reveal'
 
 const statusColor = {
-  Shipped: 'bg-green-500/10 text-green-600 border border-green-500/20',
-  'In progress': 'bg-blue-500/10 text-blue-600 border border-blue-500/20',
-  'Side project': 'bg-[rgb(var(--accent)/0.12)] text-[rgb(var(--accent))] border border-[rgb(var(--accent)/0.25)]',
+  Shipped: 'bg-[rgb(var(--accent)/0.1)] text-[rgb(var(--accent))] border border-[rgb(var(--accent)/0.2)]',
+  'In progress': 'bg-[rgb(var(--accent)/0.1)] text-[rgb(var(--accent))] border border-[rgb(var(--accent)/0.2)]',
+  'Side project': 'bg-[rgb(var(--accent)/0.1)] text-[rgb(var(--accent))] border border-[rgb(var(--accent)/0.2)]',
   'Coming soon': 'bg-[rgb(var(--muted)/0.1)] text-[rgb(var(--muted))] border border-[rgb(var(--muted)/0.2)]',
-  Completed: 'bg-purple-500/10 text-purple-600 border border-purple-500/20',
+  Completed: 'bg-[rgb(var(--accent)/0.1)] text-[rgb(var(--accent))] border border-[rgb(var(--accent)/0.2)]',
 }
 
 export default function ProjectCard({ project, index, featured = false }) {
@@ -17,10 +17,9 @@ export default function ProjectCard({ project, index, featured = false }) {
           href={project.link || undefined}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative rounded-lg overflow-hidden cursor-pointer block"
-          style={{ border: '1px solid rgb(var(--line))' }}
+          className="group relative rounded-lg overflow-hidden cursor-pointer block border border-[rgb(var(--line))]"
           whileHover={{ y: -4, boxShadow: '0 16px 40px rgb(0 0 0 / 0.1)', borderColor: 'rgb(var(--accent))' }}
-          transition={{ duration: 0.25, ease: 'easeOut' }}
+          transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <div className="grid grid-cols-1 md:grid-cols-5">
             {/* Image — takes 3/5 columns on desktop */}
@@ -40,7 +39,7 @@ export default function ProjectCard({ project, index, featured = false }) {
             </div>
 
             {/* Content — takes 2/5 columns on desktop */}
-            <div className="p-8 flex flex-col justify-center md:col-span-2">
+            <div className="p-6 md:p-8 flex flex-col justify-center md:col-span-2">
               <div className="flex items-start justify-between gap-4 mb-3">
                 <h3 className="font-semibold text-[rgb(var(--ink))] leading-snug text-lg">{project.title}</h3>
                 <span className={`shrink-0 text-xs px-2 py-0.5 rounded-full font-medium ${statusColor[project.status]}`}>
@@ -76,7 +75,7 @@ export default function ProjectCard({ project, index, featured = false }) {
         rel="noopener noreferrer"
         className="group relative border border-[rgb(var(--line))] rounded-lg overflow-hidden cursor-pointer block h-full"
         whileHover={{ y: -4, boxShadow: '0 16px 40px rgb(0 0 0 / 0.1)' }}
-        transition={{ duration: 0.25, ease: 'easeOut' }}
+        transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
       >
         {/* Image */}
         <div className="relative aspect-video overflow-hidden">

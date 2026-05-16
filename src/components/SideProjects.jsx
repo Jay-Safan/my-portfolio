@@ -18,11 +18,11 @@ const sideProjects = [
 
 export default function SideProjects() {
   return (
-    <section className="pb-16 md:pb-24" style={{ fontFamily: "'Geist', sans-serif" }}>
+    <section className="py-16 md:py-24" style={{ fontFamily: "'Geist', sans-serif" }}>
       <div className="max-w-5xl mx-auto px-6">
         <Reveal>
           <p className="font-mono text-xs tracking-widest text-[rgb(var(--muted))] uppercase mb-3">Side projects</p>
-          <h2 className="text-3xl font-semibold text-[rgb(var(--ink))] mb-12">Things I build for fun</h2>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-[rgb(var(--ink))] mb-12">Things I build for fun</h2>
         </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -31,7 +31,7 @@ export default function SideProjects() {
               <motion.div
                 className={`group relative border border-[rgb(var(--line))] rounded-lg p-6 h-full ${project.link ? 'cursor-pointer' : ''}`}
                 whileHover={{ y: -4, boxShadow: '0 12px 32px rgb(0 0 0 / 0.08)', borderColor: 'rgb(var(--accent))' }}
-                transition={{ duration: 0.25, ease: 'easeOut' }}
+                transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
                 onClick={() => project.link && window.open(project.link, '_blank', 'noopener,noreferrer')}
               >
                 {project.description ? (

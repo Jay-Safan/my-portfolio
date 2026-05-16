@@ -32,11 +32,11 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-16 md:py-24" style={{ fontFamily: "'Geist', sans-serif" }}>
+    <section id="projects" className="py-16 md:py-24 border-t border-[rgb(var(--line))]" style={{ fontFamily: "'Geist', sans-serif" }}>
       <div className="max-w-5xl mx-auto px-6">
         <Reveal>
           <p className="font-mono text-xs tracking-widest text-[rgb(var(--muted))] uppercase mb-3">Work</p>
-          <h2 className="text-3xl font-semibold text-[rgb(var(--ink))] mb-12">Selected projects</h2>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-[rgb(var(--ink))] mb-12">Selected projects</h2>
         </Reveal>
 
         {/* Projects */}
@@ -52,9 +52,8 @@ export default function Projects() {
             href="https://github.com/Jay-Safan"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-between rounded-lg px-5 sm:px-8 py-6 border group"
-            style={{ border: '1px solid rgb(var(--line))' }}
-            whileHover={{ y: -2, borderColor: 'rgb(var(--accent))' }}
+            className="flex items-center justify-between rounded-lg px-5 sm:px-8 py-6 border border-[rgb(var(--line))] group"
+            whileHover={{ y: -4, borderColor: 'rgb(var(--accent))' }}
             transition={{ duration: 0.2 }}
           >
             <div>

@@ -63,7 +63,7 @@ export default function About() {
           <div className="md:col-span-8">
             {/* Desktop heading — hidden on mobile */}
             <Reveal className="hidden md:block" delay={80}>
-              <h2 className="text-3xl font-semibold text-[rgb(var(--ink))] mb-6 leading-snug">
+              <h2 className="text-2xl sm:text-3xl font-semibold text-[rgb(var(--ink))] mb-6 leading-snug">
                 Engineer by training,<br />builder by habit.
               </h2>
             </Reveal>

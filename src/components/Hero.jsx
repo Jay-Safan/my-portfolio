@@ -1,4 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
+import FilmGrain from './FilmGrain'
+import InteractiveDotGrid from './InteractiveDotGrid'
 
 const container = {
   hidden: {},
@@ -30,7 +32,8 @@ export default function Hero() {
       className="relative min-h-screen flex items-center pt-14 px-0"
       style={{ fontFamily: "'Geist', sans-serif" }}
     >
-      <div className="absolute inset-0 dot-grid opacity-40 pointer-events-none" aria-hidden="true" />
+      <InteractiveDotGrid spacing={28} influenceRadius={140} className="absolute inset-0" />
+      <FilmGrain />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 py-24 w-full">
         <motion.div variants={container} initial="hidden" animate="show" className="flex flex-col">
@@ -58,17 +61,17 @@ export default function Hero() {
           <motion.div variants={item} className="flex flex-wrap items-center gap-4">
             <motion.a
               href="#projects"
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
-              className="px-6 py-3 bg-[rgb(var(--ink))] text-[rgb(var(--paper))] rounded font-medium text-sm"
+              className="px-6 py-3 bg-[rgb(var(--ink))] text-[rgb(var(--paper))] rounded-lg font-medium text-sm"
             >
               View my work ↓
             </motion.a>
             <motion.a
               href="#contact"
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
-              className="px-6 py-3 border border-[rgb(var(--line))] text-[rgb(var(--ink))] rounded font-medium text-sm hover:border-[rgb(var(--accent))] hover:text-[rgb(var(--accent))] transition-colors"
+              className="px-6 py-3 border border-[rgb(var(--line))] text-[rgb(var(--ink))] rounded-lg font-medium text-sm hover:border-[rgb(var(--accent))] hover:text-[rgb(var(--accent))] transition-colors"
             >
               Get in touch
             </motion.a>

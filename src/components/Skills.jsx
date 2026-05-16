@@ -79,7 +79,7 @@ function SkillIcon({ name, icon: Icon, color, delay }) {
       initial={{ opacity: 0, x: -10 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay, ease: 'easeOut' }}
+      transition={{ duration: 0.4, delay, ease: [0.25, 0.1, 0.25, 1] }}
       whileHover={{ x: 4 }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
@@ -89,7 +89,7 @@ function SkillIcon({ name, icon: Icon, color, delay }) {
         animate={{ borderColor: hovered ? activeColor : 'rgb(var(--line))' }}
         transition={{ duration: 0.2 }}
       >
-        <Icon size={18} style={{ color: hovered ? activeColor : 'rgb(var(--muted))', transition: 'color 0.2s' }} />
+        <Icon size={20} style={{ color: hovered ? activeColor : 'rgb(var(--muted))', transition: 'color 0.2s' }} />
       </motion.span>
       <span style={{ color: hovered ? 'rgb(var(--ink))' : 'rgb(var(--muted))', transition: 'color 0.2s' }} className="text-sm">
         {name}
@@ -104,7 +104,7 @@ export default function Skills() {
       <div className="max-w-5xl mx-auto px-6">
         <Reveal>
           <p className="font-mono text-xs tracking-widest text-[rgb(var(--muted))] uppercase mb-3">Stack</p>
-          <h2 className="text-3xl font-semibold text-[rgb(var(--ink))] mb-12">Tools I work with</h2>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-[rgb(var(--ink))] mb-12">Tools I work with</h2>
         </Reveal>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-10">

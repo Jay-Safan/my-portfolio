@@ -52,12 +52,13 @@ function MoonIcon() {
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('home')
+  const [hovered, setHovered] = useState(null)
   const [menuOpen, setMenuOpen] = useState(false)
   const [dark, toggleDark] = useDarkMode()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
-    window.addEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -76,75 +77,132 @@ export default function Navbar() {
     return () => observers.forEach(io => io.disconnect())
   }, [])
 
+  const highlightId = hovered || active
+
+  const stagger = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.06, delayChildren: 0.1 } },
+  }
+  const fadeIn = {
+    hidden: { opacity: 0, y: -10 },
+    show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 24 } },
+  }
+
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-[rgb(var(--paper)/0.8)] backdrop-blur border-b border-[rgb(var(--line))]' : ''
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? 'bg-[rgb(var(--paper)/0.8)] backdrop-blur-2xl border-b border-[rgb(var(--line)/0.4)]'
+          : ''
       }`}
       style={{ fontFamily: "'Geist', sans-serif" }}
     >
-      <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#home" className="flex items-center gap-1.5 group">
-          <span className="w-2 h-2 rounded-full bg-[rgb(var(--accent))] group-hover:scale-110 transition-transform" />
+      {/* Desktop */}
+      <motion.div
+        className="hidden md:flex max-w-5xl mx-auto px-6 h-14 items-center"
+        variants={stagger}
+        initial="hidden"
+        animate="show"
+      >
+        {/* Logo — left */}
+        <motion.a
+          href="#home"
+          className="flex items-center gap-1.5 group"
+          variants={fadeIn}
+        >
+          <span className="w-2 h-2 rounded-full bg-[rgb(var(--accent))] group-hover:scale-125 transition-transform duration-300" />
           <span className="font-semibold text-[rgb(var(--ink))] tracking-tight">Jay</span>
-        </a>
+        </motion.a>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
-          {links.map(({ label, href }) => {
-            const id = href.slice(1)
-            const isActive = active === id
-            return (
-              <a
-                key={href}
-                href={href}
-                className={`text-sm transition-colors px-3 py-1.5 rounded-full ${
-                  isActive
-                    ? 'bg-[rgb(var(--line)/0.6)] text-[rgb(var(--ink))]'
-                    : 'text-[rgb(var(--muted))] hover:text-[rgb(var(--ink))]'
-                }`}
-              >
-                {label}
-              </a>
-            )
-          })}
+        {/* Nav links — center */}
+        <motion.nav
+          className="absolute inset-x-0 flex justify-center pointer-events-none"
+          variants={fadeIn}
+        >
+          <div className="flex items-center gap-1 pointer-events-auto">
+            {links.map(({ label, href }) => {
+              const id = href.slice(1)
+              const isHighlighted = highlightId === id
+              return (
+                <a
+                  key={href}
+                  href={href}
+                  onMouseEnter={() => setHovered(id)}
+                  onMouseLeave={() => setHovered(null)}
+                  className={`relative px-3.5 py-1.5 text-sm font-medium rounded-lg transition-colors duration-200 ${
+                    isHighlighted
+                      ? 'text-[rgb(var(--ink))]'
+                      : 'text-[rgb(var(--muted))] hover:text-[rgb(var(--ink))]'
+                  }`}
+                >
+                  {isHighlighted && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="absolute inset-0 rounded-lg bg-[rgb(var(--line)/0.45)]"
+                      style={{ zIndex: -1 }}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 400,
+                        damping: 28,
+                      }}
+                    />
+                  )}
+                  {label}
+                </a>
+              )
+            })}
+          </div>
+        </motion.nav>
 
-          {/* Dark mode toggle */}
+        {/* Right side */}
+        <motion.div
+          className="flex items-center gap-4 ml-auto"
+          variants={fadeIn}
+        >
           <button
             onClick={toggleDark}
             aria-label="Toggle dark mode"
-            className="ml-4 w-8 h-8 flex items-center justify-center rounded border border-[rgb(var(--line))] text-[rgb(var(--muted))] hover:text-[rgb(var(--ink))] hover:border-[rgb(var(--accent))] transition-colors"
+            className="w-8 h-8 flex items-center justify-center rounded-lg cursor-pointer text-[rgb(var(--muted))] hover:text-[rgb(var(--ink))] transition-colors duration-200"
           >
             {dark ? <SunIcon /> : <MoonIcon />}
           </button>
 
           <a
             href="#contact"
-            className="ml-2 px-4 py-1.5 text-sm font-medium rounded border border-[rgb(var(--accent))] text-[rgb(var(--accent))] hover:bg-[rgb(var(--accent)/0.08)] transition-colors"
+            className="text-sm font-medium text-[rgb(var(--accent))] hover:text-[rgb(var(--ink))] transition-colors duration-200 group/cta"
           >
-            Hire me →
+            Hire me
+            <span className="inline-block ml-1 transition-transform duration-200 group-hover/cta:translate-x-0.5">
+              &rarr;
+            </span>
           </a>
-        </nav>
+        </motion.div>
+      </motion.div>
 
-        {/* Mobile right side */}
-        <div className="md:hidden flex items-center gap-3">
+      {/* Mobile header */}
+      <div className="md:hidden flex justify-between items-center px-5 h-14">
+        <a href="#home" className="flex items-center gap-1.5 group">
+          <span className="w-2 h-2 rounded-full bg-[rgb(var(--accent))] group-hover:scale-125 transition-transform duration-300" />
+          <span className="font-semibold text-[rgb(var(--ink))] tracking-tight">Jay</span>
+        </a>
+
+        <div className="flex items-center gap-3">
           <button
             onClick={toggleDark}
             aria-label="Toggle dark mode"
-            className="w-8 h-8 flex items-center justify-center rounded border border-[rgb(var(--line))] text-[rgb(var(--muted))] hover:text-[rgb(var(--ink))] transition-colors"
+            className="w-8 h-8 flex items-center justify-center rounded-lg text-[rgb(var(--muted))] hover:text-[rgb(var(--ink))] transition-colors"
           >
             {dark ? <SunIcon /> : <MoonIcon />}
           </button>
 
           <button
-            className="flex flex-col gap-1.5 p-1"
+            className="flex flex-col gap-1.5 p-1.5"
             onClick={() => setMenuOpen(o => !o)}
             aria-label="Toggle menu"
           >
-            <span className={`block w-5 h-px bg-[rgb(var(--ink))] transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-            <span className={`block w-5 h-px bg-[rgb(var(--ink))] transition-all ${menuOpen ? 'opacity-0' : ''}`} />
-            <span className={`block w-5 h-px bg-[rgb(var(--ink))] transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            <span className={`block w-5 h-px bg-[rgb(var(--ink))] transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[5px]' : ''}`} />
+            <span className={`block w-5 h-px bg-[rgb(var(--ink))] transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-5 h-px bg-[rgb(var(--ink))] transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[5px]' : ''}`} />
           </button>
         </div>
       </div>
@@ -157,30 +215,33 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="md:hidden overflow-hidden bg-[rgb(var(--paper))] border-b border-[rgb(var(--line))]"
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="md:hidden overflow-hidden border-t border-[rgb(var(--line)/0.3)] bg-[rgb(var(--paper)/0.9)] backdrop-blur-2xl"
           >
-            <div className="px-6 pb-4 pt-2 flex flex-col gap-4">
-              {links.map(({ label, href }) => (
-                <a
-                  key={href}
-                  href={href}
-                  onClick={() => setMenuOpen(false)}
-                  className={`text-sm transition-colors ${
-                    active === href.slice(1)
-                      ? 'text-[rgb(var(--ink))]'
-                      : 'text-[rgb(var(--muted))] hover:text-[rgb(var(--ink))]'
-                  }`}
-                >
-                  {label}
-                </a>
-              ))}
+            <div className="px-6 py-4 flex flex-col gap-1">
+              {links.map(({ label, href }) => {
+                const isActive = active === href.slice(1)
+                return (
+                  <a
+                    key={href}
+                    href={href}
+                    onClick={() => setMenuOpen(false)}
+                    className={`text-sm font-medium px-3 py-2.5 rounded-lg transition-colors duration-200 ${
+                      isActive
+                        ? 'text-[rgb(var(--ink))] bg-[rgb(var(--line)/0.4)]'
+                        : 'text-[rgb(var(--muted))] hover:text-[rgb(var(--ink))]'
+                    }`}
+                  >
+                    {label}
+                  </a>
+                )
+              })}
               <a
                 href="#contact"
                 onClick={() => setMenuOpen(false)}
-                className="text-sm font-medium text-[rgb(var(--accent))]"
+                className="text-sm font-medium text-[rgb(var(--accent))] px-3 py-2.5 mt-1"
               >
-                Hire me →
+                Hire me &rarr;
               </a>
             </div>
           </motion.div>
