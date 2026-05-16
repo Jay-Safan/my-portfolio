@@ -18,7 +18,7 @@ const sideProjects = [
 
 export default function SideProjects() {
   return (
-    <section className="py-16 md:py-24" style={{ fontFamily: "'Geist', sans-serif" }}>
+    <section className="py-16 md:py-24 border-t border-[rgb(var(--line))]" style={{ fontFamily: "'Geist', sans-serif" }}>
       <div className="max-w-5xl mx-auto px-6">
         <Reveal>
           <p className="font-mono text-xs tracking-widest text-[rgb(var(--muted))] uppercase mb-3">Side projects</p>

@@ -39,6 +39,9 @@ my-portfolio/
 │       ├── Contact.jsx
 │       ├── TimeZoneWidget.jsx ← extracted from Contact, React.memo wrapped
 │       ├── icons.jsx        ← shared GitHubIcon, LinkedInIcon, EmailIcon
+│       ├── FilmGrain.jsx    ← SVG feTurbulence film grain overlay (Hero bg)
+│       ├── InteractiveDotGrid.jsx ← canvas mouse-reactive dot grid (Hero bg)
+│       ├── ScrollToTop.jsx  ← floating scroll-to-top button
 │       └── Footer.jsx
 ```
 
@@ -50,28 +53,29 @@ All colors are CSS variable-driven:
 ## Component Details
 
 ### Navbar.jsx
-- Sticky top nav, transparent → frosted glass on scroll (`bg-paper/80 backdrop-blur border-b border-line`)
+- Clean three-column layout: logo left, links center (absolute), "Hire me" right
+- Transparent at top, full-width frosted bar on scroll (`bg-paper/0.8 backdrop-blur-2xl border-b`)
+- Sliding highlight pill (framer-motion `layoutId`) on active/hovered nav link
 - Active section tracking via IntersectionObserver on section IDs: `home`, `projects`, `skills`, `about`, `contact`
-- Active link shows accent underline
-- Mobile hamburger menu (toggle open/close)
-- Logo: dot + "Jay"
-- Links: Work → `#projects`, Stack → `#skills`, About → `#about`, Contact → `#contact`
-- CTA: "Hire me →" on desktop
+- Staggered entrance animation on page load
+- Mobile: hamburger menu with frosted full-width dropdown
+- "Hire me" is accent-colored text (no background pill)
 
 ### Hero.jsx
 - Section id: `home`
-- Mono label: "Fullstack & Mobile Developer · Fulltime · Remote · Freelance"
-- H1: `Hi, I'm Jay. I build clean, fast, and purposeful web apps.` ("purposeful" in italic accent color)
-- "Jay" has `.underline-accent` highlight
-- Subtext: "Software engineer focused on shipping reliable fullstack products — React on the front, PHP & Node on the back. Currently open to fullstack roles and freelance work."
-- CTAs: "View my work ↓" (filled, links to #projects) + "Get in touch" (outlined, links to #contact)
-- Availability badge: green pulsing dot + "Freelance — open now" · "Available · Aug 2026"
+- Mono label: "Fullstack & Mobile Developer"
+- H1: `Hi, I'm Jay Safan. I build clean, fast, and purposeful web & mobile apps.` ("purposeful" in accent color)
+- "Jay Safan" has `.name-shimmer` animated gradient text effect
+- Background: `InteractiveDotGrid` (canvas, mouse-reactive dots glow accent) + `FilmGrain` (SVG feTurbulence, shifting noise)
+- CTAs: "View my work ↓" (filled ink bg) + "Get in touch" (outlined, solid paper bg, border highlights on hover)
+- Chevron scroll indicator fades out on scroll
 
 ### Projects.jsx + ProjectCard.jsx
 - Section id: `projects`
-- ProjectCard extracted to its own file with statusColor map
+- ProjectCard extracted to its own file with accent-based statusColor map
 - All projects render as featured (wide) cards for consistency
-- Image hover shows custom linkLabel or "View live ↗" / "Coming soon"
+- Image hover: slow zoom (`scale-105`), gradient overlay fade-in, action bar slides up
+- Status badges use accent tokens (not hardcoded Tailwind colors)
 
 **Projects data:**
 1. ErgoPrima Company Website — Shipped — PHP 8, Tailwind CSS, Vanilla JS, Apache — links to ergoprima.com
@@ -109,13 +113,13 @@ All colors are CSS variable-driven:
 ## Design Tokens
 | Token | Light | Dark |
 |---|---|---|
-| paper | `250 249 247` (warm off-white) | `14 17 24` |
-| ink | `14 21 37` (deep navy) | `240 238 232` |
-| muted | `90 96 110` | `156 162 175` |
-| line | `224 220 212` | `36 41 53` |
-| accent | `194 142 90` (muted amber) | same |
+| paper | `252 252 250` (cool off-white) | `10 10 12` (near-black) |
+| ink | `14 21 37` (deep navy) | `245 245 245` (bright white) |
+| muted | `90 96 110` | `115 115 125` |
+| line | `230 230 228` (neutral) | `28 28 32` (neutral) |
+| accent | `91 124 106` (sage green) | same |
 
-Accent options: amber `#C28E5A`, sage `#5B7C6A`, ink blue `#3F5B8A`, terracotta `#A65A3F`
+Accent options: sage `#5B7C6A` (current), amber `#C28E5A`, ink blue `#3F5B8A`, terracotta `#A65A3F`
 
 ## Dev Commands
 ```bash
@@ -142,3 +146,10 @@ npm run preview  # preview production build
 - [x] Refactored: extracted TimeZoneWidget, ProjectCard, shared icons into separate files
 - [x] Updated Skills section with full skill set from CV (4 groups, real icons)
 - [x] Removed em dashes from all user-facing copy
+- [x] Navbar redesign: clean three-column layout, frosted bar on scroll, sliding highlight pill
+- [x] Hero background effects: interactive dot grid (canvas) + film grain (SVG feTurbulence)
+- [x] Hero name shimmer: animated gradient text on "Jay Safan"
+- [x] Project card hover: image zoom + gradient overlay
+- [x] Color palette update: neutral tones (no warm/yellow tint), near-black dark mode
+- [x] UI consistency: standardized hovers, easing, headings, borders, icon sizes across all sections
+- [x] Status badges unified to accent-based tokens

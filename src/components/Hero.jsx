@@ -46,7 +46,7 @@ export default function Hero() {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-[rgb(var(--ink))] leading-tight tracking-tight mb-6 max-w-3xl"
           >
             Hi, I'm{' '}
-            <span className="underline-accent">Jay Safan</span>
+            <span className="name-shimmer">Jay Safan</span>
             . I build clean, fast, and{' '}
             <em className="not-italic text-[rgb(var(--accent))]">purposeful</em>{' '}
             web &amp; mobile apps.
@@ -71,23 +71,12 @@ export default function Hero() {
               href="#contact"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
-              className="px-6 py-3 border border-[rgb(var(--line))] text-[rgb(var(--ink))] rounded-lg font-medium text-sm hover:border-[rgb(var(--accent))] hover:text-[rgb(var(--accent))] transition-colors"
+              className="px-6 py-3 border border-[rgb(var(--line))] bg-[rgb(var(--paper))] text-[rgb(var(--ink))] rounded-lg font-medium text-sm hover:border-[rgb(var(--ink))] transition-colors"
             >
               Get in touch
             </motion.a>
           </motion.div>
 
-          <motion.div variants={item} className="mt-12 flex flex-wrap items-center gap-4">
-            <span className="inline-flex items-center gap-2 text-sm text-[rgb(var(--muted))]">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[rgb(var(--accent))] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[rgb(var(--accent))]" />
-              </span>
-              Freelance · available now
-            </span>
-            <span className="text-[rgb(var(--line))]">·</span>
-            <span className="text-sm text-[rgb(var(--muted))]">Full-time from Aug 2026</span>
-          </motion.div>
         </motion.div>
       </div>
 

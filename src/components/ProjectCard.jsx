@@ -25,12 +25,13 @@ export default function ProjectCard({ project, index, featured = false }) {
             {/* Image — takes 3/5 columns on desktop */}
             <div className="relative aspect-video md:aspect-auto md:min-h-[280px] overflow-hidden md:col-span-3">
               {project.image ? (
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top" />
+                <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105" />
               ) : (
                 <div className="w-full h-full stripe-bg flex items-center justify-center">
                   <span className="font-mono text-5xl font-bold text-[rgb(var(--line))]">{project.index}</span>
                 </div>
               )}
+              <div className="absolute inset-0 bg-gradient-to-t from-[rgb(var(--ink)/0.3)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               <div className="absolute inset-x-0 bottom-0 h-10 bg-[rgb(var(--ink))] flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-250 ease-out">
                 <span className="text-[rgb(var(--paper))] text-sm font-medium">
                   {project.link ? (project.linkLabel || 'View live ↗') : 'Coming soon'}
@@ -80,12 +81,13 @@ export default function ProjectCard({ project, index, featured = false }) {
         {/* Image */}
         <div className="relative aspect-video overflow-hidden">
           {project.image ? (
-            <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top" />
+            <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105" />
           ) : (
             <div className="w-full h-full stripe-bg flex items-center justify-center">
               <span className="font-mono text-5xl font-bold text-[rgb(var(--line))]">{project.index}</span>
             </div>
           )}
+          <div className="absolute inset-0 bg-gradient-to-t from-[rgb(var(--ink)/0.3)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
           <div className="absolute inset-x-0 bottom-0 h-10 bg-[rgb(var(--ink))] flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-250 ease-out">
             <span className="text-[rgb(var(--paper))] text-sm font-medium">
               {project.link ? (project.linkLabel || 'View live ↗') : 'Coming soon'}
