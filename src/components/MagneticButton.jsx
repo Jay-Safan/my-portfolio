@@ -1,11 +1,13 @@
 import { useRef, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
 export default function MagneticButton({ children, className = '', as = 'a', strength = 0.3, ...props }) {
   const ref = useRef(null)
   const [pos, setPos] = useState({ x: 0, y: 0 })
+  const reduce = useReducedMotion()
 
   function handleMouseMove(e) {
+    if (reduce) return
     const rect = ref.current.getBoundingClientRect()
     const x = (e.clientX - rect.left - rect.width / 2) * strength
     const y = (e.clientY - rect.top - rect.height / 2) * strength

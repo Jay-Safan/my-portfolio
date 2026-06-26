@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Reveal } from './Reveal'
+import AnimatedText from './AnimatedText'
+import Marquee from './Marquee'
 import {
   SiReact,
   SiTypescript,
@@ -69,6 +71,16 @@ const groups = [
   },
 ]
 
+// De-duplicated flat list for the scrolling band (React Native shares the React icon).
+const allSkills = (() => {
+  const seen = new Set()
+  return groups.flatMap(g => g.skills).filter(s => {
+    if (seen.has(s.name)) return false
+    seen.add(s.name)
+    return true
+  })
+})()
+
 function SkillIcon({ name, icon: Icon, color, delay }) {
   const [hovered, setHovered] = useState(false)
   const activeColor = color || 'rgb(var(--accent))'
@@ -104,8 +116,11 @@ export default function Skills() {
       <div className="max-w-5xl mx-auto px-6">
         <Reveal>
           <p className="font-mono text-xs tracking-widest text-[rgb(var(--muted))] uppercase mb-3">Stack</p>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-[rgb(var(--ink))] mb-12">Tools I work with</h2>
         </Reveal>
+        <AnimatedText
+          text="Tools I work with"
+          className="text-2xl sm:text-3xl font-semibold text-[rgb(var(--ink))] mb-12"
+        />
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-10">
           {groups.map((group, gi) => (
@@ -122,6 +137,25 @@ export default function Skills() {
           ))}
         </div>
       </div>
+
+      {/* Full-bleed auto-scrolling tech band */}
+      <Reveal delay={120} className="mt-16">
+        <Marquee speed={45} className="py-2">
+          {allSkills.map((skill) => {
+            const Icon = skill.icon
+            return (
+              <div
+                key={skill.name}
+                className="flex items-center gap-2.5 shrink-0 pr-10 text-[rgb(var(--muted))]"
+              >
+                <Icon size={20} style={{ color: skill.color || 'rgb(var(--accent))' }} />
+                <span className="text-sm font-medium whitespace-nowrap">{skill.name}</span>
+                <span className="text-[rgb(var(--line))] pl-10 select-none">/</span>
+              </div>
+            )
+          })}
+        </Marquee>
+      </Reveal>
     </section>
   )
 }

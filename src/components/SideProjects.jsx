@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Reveal } from './Reveal'
+import AnimatedText from './AnimatedText'
 
 const sideProjects = [
   {
@@ -22,8 +23,11 @@ export default function SideProjects() {
       <div className="max-w-5xl mx-auto px-6">
         <Reveal>
           <p className="font-mono text-xs tracking-widest text-[rgb(var(--muted))] uppercase mb-3">Side projects</p>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-[rgb(var(--ink))] mb-12">Things I build for fun</h2>
         </Reveal>
+        <AnimatedText
+          text="Things I build for fun"
+          className="text-2xl sm:text-3xl font-semibold text-[rgb(var(--ink))] mb-12"
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {sideProjects.map((project, i) => (

@@ -22,7 +22,16 @@ function useDarkMode() {
     localStorage.setItem('theme', dark ? 'dark' : 'light')
   }, [dark])
 
-  return [dark, () => setDark(d => !d)]
+  const toggle = () => {
+    // Enable color transitions only for the duration of the switch.
+    const root = document.documentElement
+    root.classList.add('theme-transition')
+    window.clearTimeout(toggle._t)
+    toggle._t = window.setTimeout(() => root.classList.remove('theme-transition'), 400)
+    setDark(d => !d)
+  }
+
+  return [dark, toggle]
 }
 
 function SunIcon() {
@@ -138,7 +147,7 @@ export default function Navbar() {
                   {isHighlighted && (
                     <motion.span
                       layoutId="nav-pill"
-                      className="absolute inset-0 rounded-lg bg-[rgb(var(--line)/0.45)]"
+                      className="absolute inset-0 rounded-lg bg-[rgb(var(--ink)/0.1)]"
                       style={{ zIndex: -1 }}
                       transition={{
                         type: 'spring',

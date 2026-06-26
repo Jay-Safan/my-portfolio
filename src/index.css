@@ -15,7 +15,12 @@ html.dark {
 }
 html, body { background: rgb(var(--paper)); color: rgb(var(--ink)); }
 html { scroll-behavior: smooth; }
-*, *::before, *::after {
+/* Only fade colors during an explicit theme switch, so normal hovers stay crisp.
+   The class is toggled on <html> briefly by the dark-mode toggle. */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
 }
 body { -webkit-font-smoothing: antialiased; }
@@ -68,4 +73,42 @@ html.dark .film-grain {
   outline: 2px solid rgb(var(--accent));
   outline-offset: 3px;
   border-radius: 3px;
+}
+
+/* Infinite marquee (Skills band) */
+.marquee-track {
+  animation: marquee-scroll var(--marquee-duration, 40s) linear infinite;
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Ambient aurora drift (AuroraBackground) */
+.aurora-drift-a { animation: aurora-a 22s ease-in-out infinite; }
+.aurora-drift-b { animation: aurora-b 28s ease-in-out infinite; }
+@keyframes aurora-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, 30px) scale(1.15); }
+}
+@keyframes aurora-b {
+  0%, 100% { transform: translate(0, 0) scale(1.1); }
+  50% { transform: translate(-50px, -20px) scale(1); }
+}
+
+/* Reduced-motion safety net for CSS-driven animation */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .name-shimmer,
+  .marquee-track,
+  .aurora-drift-a,
+  .aurora-drift-b {
+    animation: none !important;
+  }
 }

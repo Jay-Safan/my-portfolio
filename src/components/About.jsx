@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { Reveal } from './Reveal'
+import AuroraBackground from './AuroraBackground'
 
 const stats = [
   { label: 'Currently', value: 'Interning @ ErgoPrima' },
@@ -8,8 +10,17 @@ const stats = [
 ]
 
 export default function About() {
+  const reduce = useReducedMotion()
+  const sectionRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  })
+  const portraitY = useTransform(scrollYProgress, [0, 1], [28, -28])
+
   return (
-    <section id="about" className="py-16 md:py-24 border-t border-[rgb(var(--line))]" style={{ fontFamily: "'Geist', sans-serif" }}>
+    <section ref={sectionRef} id="about" className="relative overflow-hidden py-16 md:py-24 border-t border-[rgb(var(--line))]" style={{ fontFamily: "'Geist', sans-serif" }}>
+      <AuroraBackground />
       <div className="max-w-5xl mx-auto px-6">
         <Reveal>
           <p className="font-mono text-xs tracking-widest text-[rgb(var(--muted))] uppercase mb-3">About</p>
@@ -48,13 +59,14 @@ export default function About() {
           <Reveal className="hidden md:block md:col-span-4" delay={0}>
             <motion.div
               className="aspect-[4/5] rounded-lg overflow-hidden border border-[rgb(var(--line))]"
+              style={{ y: reduce ? 0 : portraitY }}
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
               <img
                 src="/portrait.jpg"
                 alt="Muhammad Jay Safan"
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-cover object-top scale-110"
               />
             </motion.div>
           </Reveal>

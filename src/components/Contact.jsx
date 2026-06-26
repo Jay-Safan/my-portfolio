@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Reveal } from './Reveal'
 import { TimeZoneWidget } from './TimeZoneWidget'
 import { GitHubIcon, LinkedInIcon } from './icons'
+import AuroraBackground from './AuroraBackground'
+import MagneticButton from './MagneticButton'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -54,7 +56,8 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-16 md:py-24 border-t border-[rgb(var(--line))]" style={{ fontFamily: "'Geist', sans-serif" }}>
+    <section id="contact" className="relative overflow-hidden py-16 md:py-24 border-t border-[rgb(var(--line))]" style={{ fontFamily: "'Geist', sans-serif" }}>
+      <AuroraBackground />
       <div className="max-w-5xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           {/* Left */}
@@ -214,15 +217,15 @@ export default function Contact() {
                     </motion.div>
                   ))}
 
-                  <motion.button
+                  <MagneticButton
+                    as="button"
                     type="submit"
+                    strength={0.25}
                     disabled={status === 'sending'}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="px-6 py-3 bg-[rgb(var(--ink))] text-[rgb(var(--paper))] rounded-lg font-medium text-sm disabled:opacity-50 transition-opacity"
+                    className="self-start px-6 py-3 bg-[rgb(var(--ink))] text-[rgb(var(--paper))] rounded-lg font-medium text-sm disabled:opacity-50 transition-opacity"
                   >
                     {status === 'sending' ? 'Sending…' : status === 'error' ? 'Failed, try again' : 'Send message'}
-                  </motion.button>
+                  </MagneticButton>
                 </motion.form>
               )}
             </AnimatePresence>

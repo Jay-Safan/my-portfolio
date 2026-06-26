@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import FilmGrain from './FilmGrain'
 import InteractiveDotGrid from './InteractiveDotGrid'
 import MagneticButton from './MagneticButton'
@@ -55,6 +55,7 @@ function ChevronDown() {
 }
 
 export default function Hero() {
+  const reduce = useReducedMotion()
   const { scrollY } = useScroll()
   const chevronOpacity = useTransform(scrollY, [0, 200], [1, 0])
   // Parallax: content moves slower than background
@@ -68,7 +69,7 @@ export default function Hero() {
       style={{ fontFamily: "'Geist', sans-serif" }}
     >
       {/* Background layers — move faster for parallax depth */}
-      <motion.div className="absolute inset-0" style={{ y: bgY }}>
+      <motion.div className="absolute inset-0" style={{ y: reduce ? 0 : bgY }}>
         <InteractiveDotGrid spacing={28} influenceRadius={140} className="absolute inset-0" />
       </motion.div>
       <FilmGrain />
@@ -76,7 +77,7 @@ export default function Hero() {
       {/* Content — moves slower */}
       <motion.div
         className="relative z-10 max-w-5xl mx-auto px-6 py-24 w-full"
-        style={{ y: contentY }}
+        style={{ y: reduce ? 0 : contentY }}
       >
         <motion.div variants={container} initial="hidden" animate="show" className="flex flex-col">
           <motion.p variants={item} className="font-mono text-[10px] sm:text-xs tracking-widest text-[rgb(var(--muted))] uppercase mb-6">
@@ -92,7 +93,7 @@ export default function Hero() {
                   key={i}
                   custom={i}
                   variants={wordVariant}
-                  initial="hidden"
+                  initial={reduce ? false : 'hidden'}
                   animate="show"
                   className={`inline ${part.className}`}
                 >

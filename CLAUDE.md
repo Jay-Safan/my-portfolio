@@ -42,8 +42,18 @@ my-portfolio/
 │       ├── FilmGrain.jsx    ← SVG feTurbulence film grain overlay (Hero bg)
 │       ├── InteractiveDotGrid.jsx ← canvas mouse-reactive dot grid (Hero bg)
 │       ├── ScrollToTop.jsx  ← floating scroll-to-top button
+│       ├── AnimatedText.jsx ← reusable word-by-word heading reveal (reduced-motion aware)
+│       ├── Marquee.jsx      ← seamless infinite auto-scroll band (Skills tech ticker)
+│       ├── AuroraBackground.jsx ← subtle drifting accent blobs (About/Contact bg)
+│       ├── CursorGlow.jsx   ← soft accent cursor-follow glow (hover/fine pointers only)
 │       └── Footer.jsx
 ```
+
+## Motion / Animation Notes
+- **Reduced motion**: `framer-motion`'s `useReducedMotion()` gates Reveal, Hero (word reveal + parallax), ProjectCard tilt/spotlight, MagneticButton, About portrait parallax. CSS `@media (prefers-reduced-motion)` disables name-shimmer, marquee, aurora.
+- **Theme transitions** are scoped: color-fade only applies while `html.theme-transition` is set (toggled for ~400ms by the dark-mode toggle), so normal hovers stay crisp. Previously a universal `*` transition softened every hover.
+- **ProjectCard**: minimal hover — gentle lift (`y: -6`) + soft shadow + accent border, a slow image zoom (`scale-1.04`), the existing gradient overlay + slide-up "View live ↗" bar, and an accent underline that wipes in under the title. (The earlier 3D tilt + cursor spotlight were removed.)
+- **Skills**: infinite `Marquee` tech band below the grid (pauses on hover, edge-masked).
 
 ## Tailwind Custom Colors (extend in CSS or use inline via vars)
 All colors are CSS variable-driven:
@@ -128,6 +138,9 @@ npm run build    # production build → dist/
 npm run preview  # preview production build
 ```
 
+## Git / Commit Conventions
+- Commits are authored by Jay (Jay-Safan). Do **not** add a `Co-Authored-By: Claude` trailer or any Claude attribution to commit messages or PR bodies.
+
 ## Pending TODOs
 - [x] Replace portrait placeholder with real photo in About (`public/portrait.jpg`)
 - [x] Fill in 2nd project (PutraSportsHub) with real content
@@ -153,3 +166,11 @@ npm run preview  # preview production build
 - [x] Color palette update: neutral tones (no warm/yellow tint), near-black dark mode
 - [x] UI consistency: standardized hovers, easing, headings, borders, icon sizes across all sections
 - [x] Status badges unified to accent-based tokens
+- [x] Cursor-follow glow (global)
+- [x] Animated section headings (word-by-word reveal) on Projects, Side projects, Skills
+- [x] Project card minimal hover (lift + zoom + accent border + title underline wipe)
+- [x] Infinite tech marquee in Skills
+- [x] Ambient aurora backgrounds behind About + Contact; About portrait scroll parallax
+- [x] Magnetic submit button in Contact
+- [x] Accessibility: `prefers-reduced-motion` respected across all motion
+- [x] Scoped theme-transition (crisp hovers, fade only on theme toggle)

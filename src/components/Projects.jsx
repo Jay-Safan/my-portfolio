@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Reveal } from './Reveal'
+import AnimatedText from './AnimatedText'
 import ProjectCard from './ProjectCard'
 import ergoprimaImg from '../assets/ergoprima.png'
 import putrasportshubImg from '../assets/putrasportshub.png'
@@ -36,8 +37,11 @@ export default function Projects() {
       <div className="max-w-5xl mx-auto px-6">
         <Reveal>
           <p className="font-mono text-xs tracking-widest text-[rgb(var(--muted))] uppercase mb-3">Work</p>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-[rgb(var(--ink))] mb-12">Selected projects</h2>
         </Reveal>
+        <AnimatedText
+          text="Selected projects"
+          className="text-2xl sm:text-3xl font-semibold text-[rgb(var(--ink))] mb-12"
+        />
 
         {/* Projects */}
         <div className="flex flex-col gap-6 mb-6">

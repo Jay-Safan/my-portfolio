@@ -8,10 +8,12 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import CursorGlow from './components/CursorGlow'
 
 export default function App() {
   return (
     <>
+      <CursorGlow />
       <Navbar />
       <main>
         <Hero />
