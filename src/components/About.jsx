@@ -4,9 +4,9 @@ import { Reveal } from './Reveal'
 import AuroraBackground from './AuroraBackground'
 
 const stats = [
-  { label: 'Currently', value: 'Interning @ ErgoPrima' },
+  { label: 'Currently', value: 'Interning @ Le Medica' },
   { label: 'Freelance', value: 'Available now' },
-  { label: 'Full-time', value: 'From August 2026' },
+  { label: 'Full-time', value: 'Open to opportunities' },
 ]
 
 export default function About() {
@@ -82,13 +82,22 @@ export default function About() {
 
             <Reveal delay={160}>
               <p className="text-sm md:text-base text-[rgb(var(--muted))] leading-relaxed mb-4">
-                I'm currently interning at ErgoPrima, an ergonomics consultancy, where I rebuilt their
-                company website from the ground up and am building an internal dashboard management system
-                to automate previously manual business processes.
+                I'm currently interning at Le Medica, a medical tourism platform, where I work across
+                a large Next.js and TypeScript codebase. My work spans an AI concierge chat, a
+                configurable membership and perks system, an interactive treatment-assessment funnel,
+                and much of the site's SEO and content-management layer.
               </p>
             </Reveal>
 
             <Reveal delay={200}>
+              <p className="text-sm md:text-base text-[rgb(var(--muted))] leading-relaxed mb-4">
+                Before this, I interned at ErgoPrima, an ergonomics consultancy, where I rebuilt their
+                company website from the ground up and built an internal dashboard that automates
+                previously manual business processes.
+              </p>
+            </Reveal>
+
+            <Reveal delay={240}>
               <p className="text-sm md:text-base text-[rgb(var(--muted))] leading-relaxed mb-4">
                 My experience spans the full stack, from PHP backends and React frontends to mobile
                 apps. For my final year project at UPM, I built PutraSportsHub, a campus sports
@@ -97,7 +106,7 @@ export default function About() {
               </p>
             </Reveal>
 
-            <Reveal delay={240}>
+            <Reveal delay={280}>
               <p className="text-sm md:text-base text-[rgb(var(--muted))] leading-relaxed mb-10">
                 I'm graduating with honours and actively expanding into cloud and AI engineering.
                 My goal is to build products that are not just functional, but scalable and intelligent.

@@ -105,8 +105,8 @@ export default function Hero() {
 
           <motion.p variants={item} className="text-lg text-[rgb(var(--muted))] max-w-xl leading-relaxed mb-10">
             Software engineer who ships fullstack and mobile products. React on the front,
-            PHP &amp; Node on the back. Currently interning at ErgoPrima, open to freelance
-            now and full-time roles from August 2026.
+            PHP &amp; Node on the back. Currently interning at Le Medica, open to freelance
+            work and full-time opportunities.
           </motion.p>
 
           <motion.div variants={item} className="flex flex-wrap items-center gap-4">

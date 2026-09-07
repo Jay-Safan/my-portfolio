@@ -82,20 +82,21 @@ All colors are CSS variable-driven:
 
 ### Projects.jsx + ProjectCard.jsx
 - Section id: `projects`
-- ProjectCard extracted to its own file with accent-based statusColor map
+- ProjectCard extracted to its own file with accent-based statusColor map (`Ongoing` added for Le Medica)
 - All projects render as featured (wide) cards for consistency
 - Image hover: slow zoom (`scale-105`), gradient overlay fade-in, action bar slides up
 - Status badges use accent tokens (not hardcoded Tailwind colors)
 
 **Projects data:**
-1. ErgoPrima Company Website — Shipped — PHP 8, Tailwind CSS, Vanilla JS, Apache — links to ergoprima.com
-2. PutraSportsHub — Completed — Flutter, Firebase, Dart — links to demo video on Google Drive
+1. Le Medica — Ongoing — Next.js, TypeScript, Prisma, PostgreSQL — links to le-medica.com. Fullstack internship: AI concierge chat, membership/perks system, treatment-assessment funnel, SEO + blog CMS. Screenshot: `src/assets/lemedica.png` (branded laptop + phone device mockup).
+2. ErgoPrima Company Website — Shipped — PHP 8, Tailwind CSS, Vanilla JS, Apache — links to ergoprima.com
+3. PutraSportsHub — Completed — Flutter, Firebase, Dart — links to demo video on Google Drive
 
 ### Skills.jsx (SkillIcon inline)
 - Section id: `skills`
 - 4 groups in a 2x2 / 4-col grid:
-  - Frontend & Mobile: React, React Native, Expo, Vue.js, Flutter, TypeScript, Tailwind CSS
-  - Backend: Laravel, PHP, Node.js, Express, MongoDB, MySQL, Firebase, REST APIs
+  - Frontend & Mobile: React, React Native, Next.js, Expo, Vue.js, Flutter, TypeScript, Tailwind CSS
+  - Backend: Laravel, PHP, Node.js, Express, MongoDB, MySQL, PostgreSQL, Prisma, Firebase, REST APIs
   - Languages: JavaScript, Python, Java, Dart
   - Tools & Other: Git, AWS, Docker
 - Each skill: icon badge (react-icons) + label
@@ -103,10 +104,10 @@ All colors are CSS variable-driven:
 
 ### About.jsx
 - Section id: `about`
-- Left col (4/12): portrait placeholder (stripe-bg, aspect-[4/5]) — real photo still needed
+- Left col (4/12): portrait photo `public/portrait.jpg` (aspect-[4/5], scroll parallax)
 - Right col (8/12): heading "Engineer by training, builder by habit."
-- Bio paragraphs — all filled in (ErgoPrima internship, fullstack experience, UPM final year, cloud/AI goals)
-- Stats row: Working as (Fullstack Intern), Open to (Fulltime · Remote · Freelance), Availability (Open to opportunities)
+- Bio paragraphs — Le Medica internship (current), ErgoPrima internship (previous), fullstack range + PutraSportsHub FYP, cloud/AI goals
+- Stats row: Currently (Interning @ Le Medica), Freelance (Available now), Full-time (Open to opportunities)
 
 ### Contact.jsx
 - Section id: `contact`
@@ -144,7 +145,7 @@ npm run preview  # preview production build
 ## Pending TODOs
 - [x] Replace portrait placeholder with real photo in About (`public/portrait.jpg`)
 - [x] Fill in 2nd project (PutraSportsHub) with real content
-- [ ] Add 3rd project with real content
+- [x] Add 3rd project with real content (Le Medica)
 - [ ] Add "countries visited" section in About (options: flag row, interactive map, passport stamps — undecided)
 
 ## Completed

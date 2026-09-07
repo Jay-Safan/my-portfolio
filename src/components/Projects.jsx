@@ -4,10 +4,23 @@ import AnimatedText from './AnimatedText'
 import ProjectCard from './ProjectCard'
 import ergoprimaImg from '../assets/ergoprima.png'
 import putrasportshubImg from '../assets/putrasportshub.png'
+import lemedicaImg from '../assets/lemedica.png'
 
 const projects = [
   {
     index: '01',
+    image: lemedicaImg,
+    title: 'Le Medica',
+    tagline: 'AI concierge, memberships, and CMS for a medical tourism platform.',
+    description:
+      "Fullstack work on a production medical tourism platform. I built its AI concierge chat end to end and an interactive treatment-assessment funnel, and contributed a configurable membership and perks system plus much of the site's SEO, structured data, and blog CMS.",
+    tech: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'],
+    status: 'Ongoing',
+    link: 'https://le-medica.com/',
+    linkLabel: 'Visit site ↗',
+  },
+  {
+    index: '02',
     image: ergoprimaImg,
     title: 'ErgoPrima Company Website',
     tagline: 'Corporate web presence for an ergonomics brand.',
@@ -18,7 +31,7 @@ const projects = [
     link: 'https://www.ergoprima.com/',
   },
   {
-    index: '02',
+    index: '03',
     image: putrasportshubImg,
     title: 'PutraSportsHub',
     tagline: 'Smart sport facility booking system for UPM.',

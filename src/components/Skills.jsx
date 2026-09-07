@@ -5,11 +5,14 @@ import AnimatedText from './AnimatedText'
 import Marquee from './Marquee'
 import {
   SiReact,
+  SiNextdotjs,
   SiTypescript,
   SiTailwindcss,
   SiLaravel,
   SiPhp,
   SiNodedotjs,
+  SiPrisma,
+  SiPostgresql,
   SiMysql,
   SiGit,
   SiExpo,
@@ -32,6 +35,7 @@ const groups = [
     skills: [
       { name: 'React', icon: SiReact, color: '#61DAFB' },
       { name: 'React Native', icon: SiReact, color: '#61DAFB' },
+      { name: 'Next.js', icon: SiNextdotjs, color: null },
       { name: 'Expo', icon: SiExpo, color: null },
       { name: 'Vue.js', icon: SiVuedotjs, color: '#4FC08D' },
       { name: 'Flutter', icon: SiFlutter, color: '#02569B' },
@@ -48,6 +52,8 @@ const groups = [
       { name: 'Express', icon: SiExpress, color: null },
       { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
       { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
+      { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
+      { name: 'Prisma', icon: SiPrisma, color: null },
       { name: 'Firebase', icon: SiFirebase, color: '#FFCA28' },
       { name: 'REST APIs', icon: TbApi, color: null },
     ],

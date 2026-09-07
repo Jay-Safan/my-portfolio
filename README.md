@@ -12,7 +12,7 @@ Personal portfolio for **Muhammad Jay Safan**, a fullstack & mobile developer op
 ## Sections
 
 - **Hero** — tagline, CTAs, availability badge
-- **Projects** — ErgoPrima company website + upcoming projects
+- **Projects** — Le Medica platform, ErgoPrima company website, PutraSportsHub
 - **Skills** — Frontend, Backend, Tools
 - **About** — bio, portrait, stats
 - **Contact** — validated form wired to Formspree

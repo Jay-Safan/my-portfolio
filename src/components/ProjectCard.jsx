@@ -3,6 +3,7 @@ import { Reveal } from './Reveal'
 
 const statusColor = {
   Shipped: 'bg-[rgb(var(--accent)/0.1)] text-[rgb(var(--accent))] border border-[rgb(var(--accent)/0.2)]',
+  Ongoing: 'bg-[rgb(var(--accent)/0.1)] text-[rgb(var(--accent))] border border-[rgb(var(--accent)/0.2)]',
   'In progress': 'bg-[rgb(var(--accent)/0.1)] text-[rgb(var(--accent))] border border-[rgb(var(--accent)/0.2)]',
   'Side project': 'bg-[rgb(var(--accent)/0.1)] text-[rgb(var(--accent))] border border-[rgb(var(--accent)/0.2)]',
   'Coming soon': 'bg-[rgb(var(--muted)/0.1)] text-[rgb(var(--muted))] border border-[rgb(var(--muted)/0.2)]',
